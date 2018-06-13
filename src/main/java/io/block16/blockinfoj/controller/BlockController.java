@@ -2,6 +2,8 @@ package io.block16.blockinfoj.controller;
 
 import io.block16.blockinfoj.domain.BlockStorage;
 import io.block16.blockinfoj.dto.FullBlockDto;
+import io.block16.blockinfoj.dto.ResponseBlockDTO;
+import io.block16.blockinfoj.exceptions.BadRequestException;
 import io.block16.blockinfoj.service.BlockStorageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,8 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.ServletException;
 
 @RestController
 public class BlockController {
@@ -26,13 +26,11 @@ public class BlockController {
     }
 
     @RequestMapping(value = "/v1/block/{blockNumber}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public FullBlockDto getBlock(@PathVariable Long blockNumber) throws ServletException {
+    public ResponseBlockDTO getBlock(@PathVariable Long blockNumber) {
         if(blockNumber == null) {
-            LOGGER.info("Block number was null in request");
-            throw new ServletException("Block number cannot be null");
+            throw new BadRequestException("Block number cannot be null");
         }
-
         BlockStorage blockStorage = blockStorageService.findByBlockNumber(blockNumber);
-        return blockStorage.getBlockInfo();
+        return ResponseBlockDTO.fromFullBlockDto(blockStorage.getBlockInfo());
     }
 }
