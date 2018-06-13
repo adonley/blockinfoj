@@ -1,0 +1,33 @@
+spring:
+  profiles:
+    active: default
+
+
+server:
+  port: 8080
+
+---
+
+spring:
+  profiles: default
+mongo:
+  location: 18.220.141.134
+
+block16:
+  debug: true
+
+---
+
+spring:
+  profiles: staging
+
+block16:
+  debug: true
+
+---
+
+spring:
+  profiles: production
+
+block16:
+  debug: false
