@@ -1,33 +1,31 @@
-spring:
-  profiles:
-    active: default
 
+spring:
+  profiles: default
+
+server:
+  port: 8086
+
+mongo:
+  location: localhost
+
+---
+
+spring:
+  profiles: compose
 
 server:
   port: 8080
 
----
-
-spring:
-  profiles: default
 mongo:
-  location: 18.220.141.134
-
-block16:
-  debug: true
-
----
-
-spring:
-  profiles: staging
-
-block16:
-  debug: true
+  location: mongo
 
 ---
 
 spring:
   profiles: production
 
-block16:
-  debug: false
+server:
+  port: 8086
+
+mongo:
+  location: mongo.internal.block16

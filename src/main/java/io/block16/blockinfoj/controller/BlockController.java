@@ -20,14 +20,12 @@ public class BlockController {
 
     private final BlockStorageService blockStorageService;
 
-
     @Autowired
-    public BlockController(BlockStorageService blockStorageService) {
+    public BlockController(final BlockStorageService blockStorageService) {
         this.blockStorageService = blockStorageService;
     }
 
-
-    @RequestMapping(value = "/block/{blockNumber}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/v1/block/{blockNumber}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public FullBlockDto getBlock(@PathVariable Long blockNumber) throws ServletException {
         if(blockNumber == null) {
             LOGGER.info("Block number was null in request");
@@ -36,15 +34,5 @@ public class BlockController {
 
         BlockStorage blockStorage = blockStorageService.findByBlockNumber(blockNumber);
         return blockStorage.getBlockInfo();
-
-/*
-        FullBlockDto fullBlockDto = new FullBlockDto();
-        fullBlockDto.setReceipts(blockStorage.getBlockInfo().getReceipts());
-        fullBlockDto.setUnclesList(blockStorage.getBlockInfo().getUnclesList());
-        fullBlockDto.setTransactions(blockStorage.getBlockInfo().getTransactions());
-
-        return fullBlockDto;
-*/
     }
-
 }
