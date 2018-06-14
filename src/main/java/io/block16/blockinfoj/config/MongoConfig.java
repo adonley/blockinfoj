@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 @Configuration
 public class MongoConfig extends AbstractMongoConfiguration {
 
-    @Value("${mongo.location:18.220.141.134}")
+    @Value("${mongo.location:172.31.22.84}")
     public String mongoLocation;
 
     @Value("${mongo.port:27017}")

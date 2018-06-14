@@ -1,5 +1,11 @@
 
 spring:
+  profiles:
+    active: default
+
+---
+
+spring:
   profiles: default
 
 server:
@@ -28,7 +34,7 @@ redis:
 ---
 
 spring:
-  profiles: production
+  profiles: prod
 
 server:
   port: 8080
