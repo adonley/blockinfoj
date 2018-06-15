@@ -32,6 +32,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-data-redis')
     compile group: 'redis.clients', name: 'jedis', version: '2.9.0'
+    compile group: 'io.swagger', name: 'swagger-core', version: '1.5.20'
     compileOnly('org.projectlombok:lombok')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
