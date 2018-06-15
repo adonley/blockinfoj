@@ -2,11 +2,11 @@ FROM openjdk
 
 RUN mkdir /app
 
-COPY gradle /app/gradle
-COPY src /app/src
-COPY build.gradle /app
+COPY blockinfoj/gradle /app/gradle
+COPY blockinfoj/src /app/src
+COPY blockinfoj/build.gradle /app
 COPY settings.gradle /app
-COPY gradlew /app
+COPY blockinfoj/gradlew /app
 
 ENV SPRING_PROFILES_ACTIVE ${SPRING_PROFILES_ACTIVE}
 

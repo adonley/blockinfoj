@@ -1,12 +1,11 @@
 package io.block16.blockinfoj.controller;
 
 import io.block16.blockinfoj.domain.BlockStorage;
-import io.block16.blockinfoj.dto.FullBlockDto;
 import io.block16.blockinfoj.dto.ResponseBlockDTO;
 import io.block16.blockinfoj.exceptions.BadRequestException;
 import io.block16.blockinfoj.exceptions.NotFoundException;
 import io.block16.blockinfoj.service.BlockStorageService;
-import io.swagger.util.Yaml;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.PrintWriter;
 import java.util.Arrays;
 
 @RestController

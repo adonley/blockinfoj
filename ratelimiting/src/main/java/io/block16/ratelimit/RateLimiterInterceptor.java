@@ -1,7 +1,7 @@
-package io.block16.blockinfoj.ratelimit;
+package io.block16.ratelimit;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.block16.blockinfoj.dto.GenericResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -12,6 +12,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.PrintWriter;
 import java.time.Instant;
 import java.util.concurrent.TimeUnit;
@@ -99,7 +100,7 @@ public class RateLimiterInterceptor extends HandlerInterceptorAdapter {
         response.addHeader("X-RateLimit-Limit", String.valueOf(MINUTE_LIMIT));
         response.addHeader("X-RateLimit-Reset", String.valueOf(Instant.now().toEpochMilli() + timeRemaining));
 
-        LOGGER.debug("Remaining time: {}, Request remaining: {}", timeRemaining, remainingRequests);
+        LOGGER.info("Remaining time: {}, Request remaining: {}", timeRemaining, remainingRequests);
 
         // Should allow
         boolean allowRequest = rateLimitDTO.getRequestCount() <= MINUTE_LIMIT;

@@ -1,4 +1,4 @@
-package io.block16.blockinfoj.ratelimit;
+package io.block16.ratelimit;
 
 import lombok.Data;
 

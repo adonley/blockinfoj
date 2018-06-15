@@ -1,4 +1,4 @@
-package io.block16.blockinfoj.ratelimit;
+package io.block16.ratelimit;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
