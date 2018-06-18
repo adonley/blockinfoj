@@ -18,4 +18,4 @@ RUN cd /app \
 
 EXPOSE 8080
 
-CMD [ "java", "-Xss15m", "-Xms256m", "-Xmx500m", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app.jar" ]
+CMD [ "java", "-Xss15m", "-Xms256m", "-Xmx950m", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app.jar" ]
