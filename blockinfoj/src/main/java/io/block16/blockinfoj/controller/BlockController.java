@@ -1,6 +1,7 @@
 package io.block16.blockinfoj.controller;
 
 import io.block16.blockinfoj.domain.BlockStorage;
+import io.block16.blockinfoj.dto.FullBlockDto;
 import io.block16.blockinfoj.dto.ResponseBlockDTO;
 import io.block16.blockinfoj.exceptions.BadRequestException;
 import io.block16.blockinfoj.exceptions.NotFoundException;
@@ -44,5 +45,17 @@ public class BlockController {
             throw new NotFoundException("Could not find block " + blockNumber);
         }
         return ResponseBlockDTO.fromFullBlockDto(blockStorage.getBlockInfo());
+    }
+
+    @RequestMapping(value = "/v1/blockDto/{blockNumber}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public FullBlockDto getBlockDto(@PathVariable Long blockNumber) {
+        if(blockNumber == null) {
+            throw new BadRequestException("Block number cannot be null");
+        }
+        BlockStorage blockStorage = blockStorageService.findByBlockNumber(blockNumber);
+        if(blockStorage == null) {
+            throw new NotFoundException("Could not find block " + blockNumber);
+        }
+        return blockStorage.getBlockInfo();
     }
 }
