@@ -32,6 +32,6 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-mongodb')
     compile('org.springframework.boot:spring-boot-starter-web')
     compile group: 'org.springframework', name: 'spring-webmvc', version: '5.0.7.RELEASE'
-    compileOnly('org.projectlombok:lombok')
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.2'
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
